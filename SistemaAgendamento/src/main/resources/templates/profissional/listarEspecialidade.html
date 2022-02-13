@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <section class="layout-content" layout:fragment="corpo">
+
+            <div class="container" id="listagem">
+				<h2 th:text="#{profissional.listar.label}"></h2>
+                <div>
+                    <table class="table-list">
+                        <thead>
+                            <tr>
+                                <th th:text="#{cliente.name.label}"></th>
+                                <th th:text="#{cliente.email.label}"></th>
+                                <th th:text="#{cliente.telefone.label}"></th>
+                                <th th:text="#{consulta.data.label}"></th>
+                                <th th:text="#{consulta.horario.label}"></th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="profissional : ${profissionais}">
+                                <td th:text="${profissional.nome}"></td>
+                                <td th:text="${profissional.email}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

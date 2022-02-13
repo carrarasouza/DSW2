@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:fragment="cabecalho">
+            <nav>
+                 <div sec:authorize="isAuthenticated()" style="right: 10px; position: absolute">
+                     <form th:action="@{/logout}" method="post">
+                           <input type="submit" name="login-submit" id="login-submit" value="Logout">
+                     </form>
+                  </div>
+                  <div sec:authorize="isAnonymous()">
+                       <div th:if="${profissionais == null}">
+	                       <div style='right:200px; position: absolute'>
+		                       	<a th:href="@{/listar}">
+		                       		<button type="button" th:text="#{profissional.listar.label}"></button>
+		                       	</a>
+	                       </div>
+                   	   </div>
+	                   <div th:unless="${profissionais == null}">
+	                       <div style='right:200px; position: absolute'>
+		                       	<a th:href="@{/login}">
+		                       		<button type="button" th:text="#{cliente.username.label}"></button>
+		                       	</a>
+	                       </div>
+	                   </div>
+               	  </div>
+                    <div style="right: 100px; position: absolute">
+                        <a th:href="@{''(lang=pt)}">
+                        	<img alt="" th:src="@{/image/Brasil.gif}" style="width: 30px;" />
+                        </a> 
+                        <a th:href="@{''(lang=en)}">
+                        	<img alt="" th:src="@{/image/EUA.gif}" style="width: 30px;" />
+                        </a>
+                    </div>
+                    <a th:href="@{/}" th:text="#{title.label}"></a>
+            </nav>
+        </header>
+    </body>
+</html>

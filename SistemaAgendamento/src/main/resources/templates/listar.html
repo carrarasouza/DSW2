@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout2}">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div layout:fragment="content" th:remove="tag">
+
+            <nav>
+                <div>
+                    <ul>
+                        <li class="title-list" >
+                            <span th:text="#{profissional.listar.label}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <br /> <br /> <br />
+            
+            <h1 th:text="#{sidebar.titulo.profissional}" style="text-align:center;"></h1><br>
+
+            <div id="listagem">
+                <div>
+                  <form name="filtraEspecialidade">
+                  	<label th:text="#{filtra.especialide}" for="especialidade"></label>
+                  	<input id="especialidade" name="especialidade" /><br /><br />
+                    <table class="table-list">
+                        <thead>
+                            <tr>
+                                <th th:text="#{profissional.name.label}"></th>
+                                <th th:text="#{profissional.email.label}"></th>
+                                <th th:text="#{profissional.especialidade.label}"></th>
+                                <th th:text="#{profissional.curriculo.label}"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="especialidades" name="especialidades">
+                            <tr th:each="profissional : ${profissionais}">
+                                <td th:text="${profissional.nome}"></td>
+                                <td th:text="${profissional.email}"></td>
+                                <td th:text="${profissional.especialidade}"></td>
+                                <td colspan="1"> 
+                                	 <a th:href="@{/upload{file} (file=${profissional.curriculo}) }" th:text="#{profissional.curriculo.arquivo}">
+                                	</a> 
+                                </td>
+                                <td sec:authorize="isAuthenticated()" colspan="2">
+                                    <a th:href="aaaaaa"> 
+                                        <span th:text="#{link.consulta.label}" > </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </form>
+                </div>
+            </div>
+         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script type="text/javascript" th:inline="javascript" th:src="@{/js/ajaxEspecialidade.js}"></script>
+        </div>               
+    </body>
+</html>

@@ -1,0 +1,67 @@
+/*
+ * Base structure
+ */
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 0;
+    padding-left: 0;
+} 
+
+
+header{
+	position: relative;
+	top: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	
+}
+
+aside{
+	width: 200px;
+	position:relative;
+	z-index: 1;
+}
+
+li{
+	line-height: 30px;
+}
+
+/*
+ * Content
+ */
+.layout-content {
+    width: 100%;
+    padding-top: 0px;
+}
+
+.container-login {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    bottom: 100px;
+    text-align: center;
+}
+
+.container-footer {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: relative;
+	bottom: 5px;
+}
+
+.table-list{
+	margin: auto;
+}
+
+.title-list{
+	list-style-type: none;
+}

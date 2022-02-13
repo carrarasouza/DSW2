@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <section class="layout-content" layout:fragment="corpo">
+
+            <div class="container" id="listagem">
+				<h2 th:text="#{profissional.listar.label}"></h2>	
+
+                <div>	
+                    <table class="table-list">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th th:text="#{profissional.name.label}"></th>
+                                <th th:text="#{profissional.email.label}"></th>
+                                <th th:text="#{profissional.CPF.label}"></th>  
+                                <th th:text="#{profissional.especialidade.label}"></th>
+                                <th th:text="#{profissional.curriculo.label}"></th>
+                                <th th:text="#{acao.label}"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="profissional : ${profissionais}">
+                                <td th:text="${profissional.id}"></td>
+                                <td th:text="${profissional.nome}"></td>
+                                <td th:text="${profissional.email}"></td>
+                                <td th:text="${profissional.CPF}"></td>
+                                <td th:text="${profissional.especialidade}"></td>
+                                <td > <a th:href="@{/upload/{file} (file=${profissional.curriculo}) }" th:text="#{profissional.curriculo.arquivo}" target="_blank"></a> </td>
+                                <td colspan="2">
+                                    <a th:href="@{/admin/editarProfissional/{id} (id=${profissional.id}) }" th:text="#{link.editar.label}"> </a>
+	                                <a th:href="@{/admin/excluirProfissional/{id} (id=${profissional.id})}" 
+	                                       th:text="#{link.excluir.label}"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
