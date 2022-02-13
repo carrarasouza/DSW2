@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <section class="layout-content" layout:fragment="corpo">
+
+            <nav class="navbar navbar-expand-md bg-light">
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><i class="oi oi-caret-right"></i>
+                            <span th:text="#{profissional.cadastrar.label}"></span></li>
+                    </ul>
+                    <a class="btn btn-primary btn-md" th:href="@{/admin/listarProfissional}"
+                       role="button"> <span class="oi oi-spreadsheet" title="Listar"
+                                                                      aria-hidden="true"></span> <span th:text="#{profissional.listar.label}"></span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="container" id="cadastro">
+
+                <div th:replace="fragments/alert"></div>
+
+                <form
+                    th:action="${profissional.id == null} ? @{/admin/salvarProfissional} : @{/admin/editarProfissional}"
+                    th:object="${profissional}" method="POST" enctype="multipart/form-data">
+					<div class="form-row">
+						<div class="form-group col-md-4">
+                            <label th:text="#{profissional.name.label}" for="name"></label> 
+                            <input type="text" class="form-control" id="name"
+                                                                    th:placeholder="#{profissional.name.label}"
+                                                                    autofocus="autofocus" th:field="*{nome}"
+                                                                    th:classappend="${#fields.hasErrors('nome')} ? is-invalid" />
+
+                            <div class="invalid-feedback">
+                                <span th:errors="*{nome}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label th:text="#{profissional.email.label}" for="email"></label> 
+                            <input type="email" class="form-control" id="email"
+                                                                    th:placeholder="#{profissional.email.label}"
+                                                                    autofocus="autofocus" th:field="*{email}"
+                                                                    th:classappend="${#fields.hasErrors('email')} ? is-invalid" />
+
+                            <div class="invalid-feedback">
+                                <span th:errors="*{email}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label th:text="#{profissional.password.label}" for="password"></label> 
+                            <input type="text" class="form-control" id="password"
+                                                                    th:placeholder="#{profissional.password.label}" autofocus="autofocus"
+                                                                                                               th:field="*{senha}"
+                                                                                                               th:classappend="${#fields.hasErrors('senha')} ? is-invalid" th:readonly="${profissional.id != null}"/>
+
+                            <div class="invalid-feedback">
+                                <span th:errors="*{senha}"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label th:text="#{profissional.CPF.label}" for="CPF"></label> 
+                            <input type="text" class="form-control" id="CPF" th:field="*{CPF}"
+                                                                    autofocus="autofocus" placeholder="___.___.___-__"
+                                                                                          th:classappend="${#fields.hasErrors('CPF')} ? is-invalid" 
+                                                                                          data-mask="000.000.000-00" data-mask-reverse="true" />
+
+                            <div class="invalid-feedback">
+                                <span th:errors="*{CPF}"></span>
+                            </div>
+                        </div> 
+                        <div class="form-group col-md-3">
+                            <label th:text="#{profissional.especialidade.label}" for="especialidade"></label> 
+                            <input type="text" class="form-control" id="especialidade" th:field="*{especialidade}"
+                                                                    autofocus="autofocus"  th:classappend="${#fields.hasErrors('especialidade')} ? is-invalid" 
+                                                                    />
+
+                            <div class="invalid-feedback">
+                                <span th:errors="*{especialidade}"></span>
+                            </div>
+                        </div>	
+                        <div class="form-group col-md-3">
+                            <label th:text="#{profissional.curriculo.label}" for="curriculo"></label> 
+                            <input type="file" accept=".pdf" name="file" class="form-control-file" id="file" />
+                        </div>	
+                        
+                        <div class="form-group col-md-3">
+                            <label th:text="#{profissional.role.label}" for="role"></label> 
+                            <select id="role" class="form-control" th:field="*{papel}"
+                                              th:classappend="${#fields.hasErrors('papel')} ? is-invalid">
+                                <option value="ROLE_PROF">ROLE_PROF</option>
+                            </select>
+
+                            <div class="invalid-feedback">
+                                <span th:errors="*{papel}"></span>
+                            </div>
+                        </div>  	
+   
+                                   
+                    </div>
+                    <input type="hidden" id="id" th:field="*{id}" />
+                    <button type="submit" th:text="#{button.salvar.label}"
+                            class="btn btn-primary btn-sm"></button>
+                </form>
+            </div>
+        </section>   
+    </body>
+</html>

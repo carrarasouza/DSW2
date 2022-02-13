@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <section class="layout-content" layout:fragment="corpo">
+
+            <nav class="navbar navbar-expand-md bg-light">
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <i class="oi oi-caret-right"></i>
+                            <span th:text="#{profissional.listar.label}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container" id="listagem">
+
+                <div th:replace="fragments/alert"></div>
+
+                <div class="table-responsive" style="text-align:center;">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th th:text="#{profissional.name.label}"></th>
+                                <th th:text="#{profissional.email.label}"></th>
+                                <th th:text="#{profissional.especialidade.label}"></th>
+                                <th th:text="#{consulta.data.label}"></th>
+                                <th th:text="#{consulta.horario.label}"></th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="consulta : ${consultas}">
+                                <td th:text="${consulta.profissional.nome}"></td>
+                                <td th:text="${consulta.profissional.email}"></td>
+                                <td th:text="${consulta.profissional.especialidade}"></td>
+                                <td th:text="${consulta.data}"></td>
+                                <td th:text="${consulta.horario}"></td>
+                                <td colspan="2">
+                                    <a class="btn btn-info btn-sm" th:href="${consulta.url}"
+                                       role="button"> 
+                                        <span class="oi oi-calendar" th:title="#{link.consulta.label}" aria-hidden="true"> </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div th:replace="fragments/modal :: modal"></div>
+        </section>
+    </body>
+</html>

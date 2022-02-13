@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head>
+        <head>
+            <meta charset="UTF-8">
+        </head>
+        <body>
+            <nav class="sidebar sidebar-open" th:fragment="nav-sidebar">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link " th:href="@{/}"> <i
+                                            class="oi oi-home"></i> <span th:text="#{sidebar.link.home}"></span>
+                        </a></li>
+                </ul>
+                <div sec:authorize="hasRole('ROLE_USER')">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><span class="nav-link active"
+                                                   th:text="#{sidebar.titulo.profissional}"></span></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                th:href="@{/cliente/listarConsulta}"> <i class="oi oi-spreadsheet"></i> <span
+                                                                                         th:text="#{consulta.listar.label}"></span>
+                            </a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    th:href="@{/cliente/listarProfissional}"> <i class="oi oi-spreadsheet"></i>
+                                                    <span th:text="#{profissional.listar.label}"></span>
+                                </a></li>
+                    </ul>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_PROF')">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><span class="nav-link active"
+                                                   th:text="#{sidebar.titulo.consulta}"></span></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                th:href="@{/profissional/listarConsulta}"> <i class="oi oi-spreadsheet"></i> <span
+                                                                                              th:text="#{consulta.listar.label}"></span>
+                            </a></li>
+                    </ul>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><span class="nav-link active"
+                                                   th:text="#{sidebar.titulo.profissional}"></span></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                th:href="@{/admin/cadastrarProfissional}"> <i class="oi oi-plus"></i> <span
+                                                                                              th:text="#{sidebar.link.cadastrar}"></span>
+                            </a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    th:href="@{/admin/listarProfissional}"> <i class="oi oi-spreadsheet"></i>
+                                                    <span th:text="#{sidebar.link.listar}"></span>
+                                </a></li>
+                    </ul>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"><span class="nav-link active"
+                                                   th:text="#{sidebar.titulo.cliente}"></span></li>
+                        <li class="nav-item"><a class="nav-link"
+                                                th:href="@{/admin/cadastrarCliente}"> <i class="oi oi-plus"></i> <span
+                                                                                         th:text="#{sidebar.link.cadastrar}"></span>
+                            </a></li>
+                            <li class="nav-item"><a class="nav-link"
+                                                    th:href="@{/admin/listarCliente}"> <i class="oi oi-spreadsheet"></i>
+                                                    <span th:text="#{sidebar.link.listar}"></span>
+                                </a></li>
+                    </ul>
+                </div>
+            </nav>
+        </body>
+</html>

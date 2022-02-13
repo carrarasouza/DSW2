@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    <head>
+        <meta charset="UTF-8" />
+        <script type="text/javascript" th:inline="javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/js/ajaxEspecialidade.js}"></script>
+    </head>
+    <body>
+        <section class="layout-content" layout:fragment="corpo">
+
+            <nav class="navbar navbar-expand-md bg-light">
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <i class="oi oi-caret-right"></i>
+                            <span th:text="#{profissional.listar.label}"></span>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <i class="oi oi-caret-right"></i>
+                            <input type="text" id="especialidade" style="width: 200px;" placeholder="Especialidade" onkeyUp="apresentaEspecialidade()"/>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container" id="listagem">
+
+                <div th:replace="fragments/alert"></div>
+
+                <div class="table-responsive" style="text-align:center;">
+                    <!--<label th:text="#{filtra.especialide}" for="especialidade"></label>
+                  	<input id="especialidade" name="especialidade" /><br /><br /> -->
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th th:text="#{profissional.name.label}"></th>
+                                <th th:text="#{profissional.email.label}"></th>
+                                <th th:text="#{profissional.especialidade.label}"></th>
+                                <th th:text="#{profissional.curriculo.label}"></th>
+                                <th th:text="#{consulta.cadastrar.label}"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="especialidades" name="especialidades">
+                            <tr th:each="profissional : ${profissionais}">
+                                <td th:text="${profissional.nome}"></td>
+                                <td th:text="${profissional.email}"></td>
+                                <td th:text="${profissional.especialidade}"></td>
+                                <td colspan="1"> 
+                                	<a class="btn btn-info btn-sm" th:href="@{/upload/{file} (file=${profissional.curriculo}) }" role="button">
+                                		<span class="oi oi-arrow-circle-bottom" th:title="#{profissional.curriculo.arquivo}" aria-hidden="true"> </span>
+                                	</a> 
+                                </td>
+                                <td colspan="2">
+                                    <a class="btn btn-info btn-sm" th:href="@{/cliente/cadastrarConsulta/{id} (id=${profissional.id}) }"
+                                       role="button"> 
+                                        <span class="oi oi-calendar" th:title="#{link.consulta.label}" aria-hidden="true"> </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div th:replace="fragments/modal :: modal"></div>
+        </section>
+    </body>
+</html>

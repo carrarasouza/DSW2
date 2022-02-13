@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    <head>
+    </head>
+    <body>
+        <section class="layout-content" layout:fragment="corpo">
+
+            <div class="container text-center content-center">
+                <h1 th:text="#{title.label}"></h1>
+                
+                <h2>
+                	<span th:text="#{consulta.com}"  th:remove="tag"></span>
+                	[[${profissional.nome}]]
+                </h2>
+                
+                <form th:action="@{/cliente/salvarConsulta}" method="POST" >
+				  <div class="form-row">
+				    <div class="form-group cold-md-3">
+				     	<label th:text="#{consulta.data.label}" for="data"></label> 
+				    	<input type="date" id="data" name="data" class="form-control" placeholder="dd/MM/YYYY"/>
+				    </div>
+				    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    <div class="form-group col-md-3">
+				    	<label th:text="#{consulta.horario.label}" for="horario"></label>
+					    	<select name="horario" id="horario" class="form-control">
+							<option value="7:00:00">7:00</option>
+							<option value="8:00:00">8:00</option>
+							<option value="9:00:00">9:00</option>
+							<option value="10:00:00">10:00</option>
+							<option value="11:00:00">11:00</option>
+							<option value="12:00:00">12:00</option>
+							<option value="13:00:00">13:00</option>
+							<option value="14:00:00">14:00</option>
+							<option value="15:00:00">15:00</option>
+							<option value="16:00:00">16:00</option>
+							<option value="17:00:00">17:00</option>
+						</select><br><br>
+				    </div>
+				  </div>
+				  
+				  <input type="hidden" id="idProfissional" name="idProfissional" th:value="${profissional.id}"/>
+                  <button type="submit" th:text="#{button.salvar.label}"
+                            class="btn btn-primary btn-sm"></button>
+				</form>
+            </div>
+
+        </section>
+    </body>
+</html>
