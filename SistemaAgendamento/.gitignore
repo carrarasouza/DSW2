@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+SistemaAgendamento/src/main/resources/application.properties
