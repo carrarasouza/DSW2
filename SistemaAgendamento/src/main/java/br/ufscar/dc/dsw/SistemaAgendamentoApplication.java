@@ -12,7 +12,7 @@ import br.ufscar.dc.dsw.dao.IConsultaDAO;
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Profissional;
 
-@SpringBootApplication
+@SpringBootApplication  
 public class SistemaAgendamentoApplication {
 
     public static void main(String[] args) {

@@ -8,14 +8,14 @@
     <body>
         <section class="layout-content" layout:fragment="corpo">
 
-            <div class="container" id="listagem">
+            <div id="listagem">
             
             	<h2 th:text="#{profissional.listar.label}"></h2>
                 <div>
                     <table class="table-list">
                         <thead>
                             <tr>
-                                <th th:text="#{profissional.name.label}"></th>
+                                <th th:text="#{profissional.name.label}" class="hide-nome-profissional"></th>
                                 <th th:text="#{profissional.email.label}"></th>
                                 <th th:text="#{profissional.especialidade.label}"></th>
                                 <th th:text="#{profissional.curriculo.label}"></th>
@@ -24,7 +24,7 @@
                         </thead>
                         <tbody id="especialidades" name="especialidades">
                             <tr th:each="profissional : ${profissionais}">
-                                <td th:text="${profissional.nome}"></td>
+                                <td th:text="${profissional.nome}" class="hide-nome-profissional"></td>
                                 <td th:text="${profissional.email}"></td>
                                 <td th:text="${profissional.especialidade}"></td>
                                 <td colspan="1"> 

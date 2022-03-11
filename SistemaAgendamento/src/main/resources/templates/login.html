@@ -7,25 +7,26 @@
     <body>
         <div layout:fragment="content" th:remove="tag">
 
-            <br /> <br /> <br />
-                <h1 th:text="#{login.message}"></h1>
-                <form th:action="@{/login}" method="post">
-                    <div th:if="${param.error}">
-                        <div class="alert alert-danger">
-                            <span th:text="#{login.error}"></span>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="username" th:text="#{login.username}"></label>: 
-                        <input type="text" id="username" name="username" autofocus="autofocus" th:placeholder="#{login.username}">
-                    </div>
-                    <div>
-                        <label for="password" th:text="#{login.password}"></label>: 
-                        <input type="password" id="password" name="password" th:placeholder="#{login.password}">
-                    </div>
-                    <div>
-               			<input type="submit" name="login-submit" id="login-submit" th:value="#{login.button}">
-                    </div>
+                <form th:action="@{/login}" method="post" class="form-login">
+                	<fieldset>
+                		<legend th:text="#{login.message}"></legend>
+	                    <div th:if="${param.error}">
+	                        <div class="alert alert-danger">
+	                            <span th:text="#{login.error}"></span>
+	                        </div>
+	                    </div>
+	                    <div class="input">
+	                        <label for="username" th:text="#{login.username}"></label><br>
+	                        <input type="text" id="username" class="input-text" name="username" autofocus="autofocus" th:placeholder="#{login.username}">
+	                    </div>
+	                    <div class="input">
+	                        <label for="password" th:text="#{login.password}"></label><br>
+	                        <input type="password" id="password" class="input-text" name="password" th:placeholder="#{login.password}">
+	                    </div>
+	                    <div>
+	               			<input type="submit" name="login-submit" id="login-submit" class="input-submit" th:value="#{login.button}">
+	                    </div>
+                    </fieldset>
                 </form>
         </div>
     </body>

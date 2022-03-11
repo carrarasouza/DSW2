@@ -6,7 +6,7 @@
 
         <title th:text="#{title.label}"></title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
         <link th:href="@{/css/style.css}" rel="stylesheet" />
     </head>
@@ -15,19 +15,18 @@
         <header th:replace="fragments/header :: cabecalho">
             <div>header</div>
         </header>
-
-        <div>
-            <aside>
-                <nav th:replace="fragments/sidebar :: nav-sidebar">
-                    <span>menu</span>
-                </nav>
-            </aside>
-
-            <section layout:fragment="corpo">
-                <div>conteúdo principal das páginas</div>
-            </section>
+		<div class="container">
+	        <aside>
+	            <nav th:replace="fragments/sidebar :: nav-sidebar">
+	                <span>menu</span>
+	            </nav>
+	        </aside>
+	
+	        <section layout:fragment="corpo">
+	            <div>conteúdo principal das páginas</div>
+	        </section>
         </div>
-
+		<hr>
         <footer th:replace="fragments/footer :: rodape">
             <div>footer</div>
         </footer>

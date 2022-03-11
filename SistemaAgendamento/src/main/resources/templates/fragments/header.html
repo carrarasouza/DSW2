@@ -5,7 +5,7 @@
     </head>
     <body>
         <header th:fragment="cabecalho">
-            <nav>
+            <nav class="nav-main">
                  <div sec:authorize="isAuthenticated()" style="right: 10px; position: absolute">
                      <form th:action="@{/logout}" method="post">
                            <input type="submit" name="login-submit" id="login-submit" value="Logout">
@@ -14,8 +14,8 @@
                   <div sec:authorize="isAnonymous()">
                        <div th:if="${profissionais == null}">
 	                       <div style='right:200px; position: absolute'>
-		                       	<a th:href="@{/listar}">
-		                       		<button type="button" th:text="#{profissional.listar.label}"></button>
+		                       	<a th:href="@{/listar}" class="button-generic">
+		                       		<button type="button" th:text="#{profissional.listar.label}" ></button>
 		                       	</a>
 	                       </div>
                    	   </div>
@@ -35,7 +35,7 @@
                         	<img alt="" th:src="@{/image/EUA.gif}" style="width: 30px;" />
                         </a>
                     </div>
-                    <a th:href="@{/}" th:text="#{title.label}"></a>
+                    <a class="home-link" th:href="@{/}" th:text="#{title.label}"></a>
             </nav>
         </header>
     </body>

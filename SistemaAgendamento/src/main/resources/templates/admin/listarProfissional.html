@@ -6,17 +6,16 @@
     <body>
         <section class="layout-content" layout:fragment="corpo">
 
-            <div class="container" id="listagem">
+            <div id="listagem">
 				<h2 th:text="#{profissional.listar.label}"></h2>	
-
-                <div>	
+				
                     <table class="table-list">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th th:text="#{profissional.name.label}"></th>
+                                <th class="hide-profissional">#</th>
+                                <th th:text="#{profissional.name.label}" class="hide-nome-profissional"></th>
                                 <th th:text="#{profissional.email.label}"></th>
-                                <th th:text="#{profissional.CPF.label}"></th>  
+                                <th th:text="#{profissional.CPF.label}" class="hide-profissional"></th>
                                 <th th:text="#{profissional.especialidade.label}"></th>
                                 <th th:text="#{profissional.curriculo.label}"></th>
                                 <th th:text="#{acao.label}"></th>
@@ -24,10 +23,10 @@
                         </thead>
                         <tbody>
                             <tr th:each="profissional : ${profissionais}">
-                                <td th:text="${profissional.id}"></td>
-                                <td th:text="${profissional.nome}"></td>
+                                <td th:text="${profissional.id}" class="hide-profissional"></td>
+                                <td th:text="${profissional.nome}" class="hide-nome-profissional"></td>
                                 <td th:text="${profissional.email}"></td>
-                                <td th:text="${profissional.CPF}"></td>
+                                <td th:text="${profissional.CPF}" class="hide-profissional"></td>
                                 <td th:text="${profissional.especialidade}"></td>
                                 <td > <a th:href="@{/upload/{file} (file=${profissional.curriculo}) }" th:text="#{profissional.curriculo.arquivo}" target="_blank"></a> </td>
                                 <td colspan="2">
@@ -38,7 +37,6 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
             </div>
         </section>
     </body>

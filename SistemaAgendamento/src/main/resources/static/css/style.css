@@ -8,47 +8,271 @@ html, body {
 body {
     padding-top: 0;
     padding-left: 0;
+    margin: 0px;
 } 
-
-
+/* CSS do cabeçalho */
 header{
+	display:flex;
 	position: relative;
 	top: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	
+	background-color: black;
+	height: 1em;
+	width: 100%;
+}
+
+.home-link{
+	text-decoration: none;
+	color: white;
+	padding-left: 10px;
+}
+
+@media screen and (max-width:460px){
+	.home-link{
+		display: none;
+	}
+}
+
+/* Fim do CSS no cabeçalho*/
+
+
+/* CSS para o form de login */
+
+.container-login {
+	margin-top: 40px;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.form-login{
+	width: 300px;
+	height: 300px;
+	margin: 0;
+	text-align: center;
+}
+
+fieldset{
+	width: 300px;
+	border-style: ridge;
+	border-radius: 10px;
+	box-shadow: #030 3px 3px 2px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+legend{
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+.input{
+	padding: 0.5em;
+	margin: 0.2em;
+}
+
+.input-text{
+	margin: 0.5em;
+}
+
+.input-submit{
+	margin-top: 0.7em;
+	background-color: #7ccbf6;
+	padding-left: 9px;
+	padding-right: 9px; 
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-radius: 10px;
+}
+/* Fim do CSS do form Login*/ 
+
+
+/* Inicio CSS lista no Login */
+
+.container{
+	display: flex;
+	width: 100%;
 }
 
 aside{
-	width: 200px;
-	position:relative;
-	z-index: 1;
+	width: 15%;
+	background-color: #cacaca;
+	margin-top: 10px;
+	font-size: 1em;
 }
 
 li{
 	line-height: 30px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	
 }
 
+section.layout-content{
+	width: 100%;
+	text-align: center;
+}
+
+@media screen and (max-width:600px){
+	aside{
+		display: none;
+	}
+}
+
+@media screen and (max-width:700px){
+	.hide-profissional{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 380px){
+	.hide-nome-profissional{
+		display: none;
+	}
+}
+
+@media screen and (max-width:800px){
+	.hide-cliente{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 420px){
+	.hide-nome-cliente{
+		display: none;
+	}
+}
+
+/* Fim do CS lista no Login */
+
+
+.form-cadastro{
+	flex-wrap: wrap;
+}
+
+/* CSS listagem profissioanl sem login */
+
+.container-listar{
+	flex-direction: column;
+}
+
+#listagem{
+	height: 400px;
+	width: 100%;
+	text-align: center;
+}
+
+.form-listagem{
+	padding-top: 1.4em;
+}
+
+/* Fim CSS listagem profissional sem login */
+
+
+/* CSS tabela generica */
+
+table{
+	width: 70%;
+}
+
+.table-list, th, td{
+	margin: auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th{
+	background: #4780fc;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+td{
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+tbody tr:nth-of-type(odd){
+	background-color: #F0FFF0;
+}
+
+tbody tr:nth-of-type(even){
+	background-color: #7dd47d;
+}
+
+
+.title-list{
+	list-style-type: none;
+	background-color: #9a9a9a;
+	padding-left: 7px;
+}
+
+.link-list{
+	list-style-type: none;
+	padding-left: 15px;
+}
+
+.link-list a{
+	text-decoration: none;
+}
+
+ul.rm-padding{
+	padding-inline-start: 0px;
+}
+
+.input-div{
+	display: inline-block;
+}
+
+.text-input-size{
+	margin-right: 80px;
+} 
+
+.box-size{
+	height: 20px;
+}
+
+#name-input{
+	width: 250px;
+}
+
+#email-input{
+	width: 300px;
+}
+
+#password-input{
+	width: 150px;
+}
+
+#cpf-input{
+	width: 150px;
+}
+
+#especialidade-input{
+	width: 150px;
+}
+
+#telefone-input{
+	width: 150px;
+}
+
+#data-input{
+	width: 100px;
+}
+
+
+
+.label-size{
+	font-size: 20px;
+	line-height: 50px;
+}
 /*
  * Content
  */
-.layout-content {
-    width: 100%;
-    padding-top: 0px;
-}
-
-.container-login {
-    width: 100%;
-    position: relative;
-    text-align: center;
-}
-
-.container {
-    width: 100%;
-    position: relative;
-    bottom: 100px;
-    text-align: center;
-}
 
 .container-footer {
 	text-align: center;
@@ -58,10 +282,7 @@ li{
 	bottom: 5px;
 }
 
-.table-list{
-	margin: auto;
-}
 
-.title-list{
-	list-style-type: none;
+.title-list::after{
+	content: '👇';
 }
