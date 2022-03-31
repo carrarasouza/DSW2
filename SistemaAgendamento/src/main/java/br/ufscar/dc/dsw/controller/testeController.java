@@ -11,11 +11,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import br.ufscar.dc.dsw.domain.Cliente;
 import br.ufscar.dc.dsw.domain.Profissional;
@@ -30,8 +33,9 @@ public class testeController {
 	private IProfissionalService dao;
 	
 	
-    @RequestMapping(value = "/especialidade", method = RequestMethod.GET)
-    public @ResponseBody List<String> listarPorEspecialidade(@RequestParam("tipo") String especialidade){
+    @GetMapping(value = "/especialidade/{tipo}")
+    public @ResponseBody List<String> listarPorEspecialidade2(@PathVariable("tipo") String especialidade){
+    	System.out.println("ENtrou aqui");
     	List<Profissional> profissionais = dao.buscarPorEspecialidade(especialidade);
     	List<String> listaProfissional = new ArrayList<String>();
     	for(Profissional p : profissionais) {

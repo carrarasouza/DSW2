@@ -10,11 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
 
 import br.ufscar.dc.dsw.domain.Profissional;
 import br.ufscar.dc.dsw.service.spec.IProfissionalService;
@@ -29,11 +32,12 @@ public class ListaController {
 	
 	@GetMapping("listar")
 	public String listaProfissionais(ModelMap model) {
+		System.out.println("Apresentou listar");
 		model.addAttribute("profissionais", dao.buscarTodos());
 		return "/listar";
 	}
 	
-    @RequestMapping(value = "especialidade", method = RequestMethod.GET)
+    @GetMapping(value = "especialidade")
     public @ResponseBody List<String> listarPorEspecialidade(@RequestBody String especialidade){
     	List<Profissional> profissionais = dao.buscarPorEspecialidade(especialidade);
     	List<String> listaProfissional = new ArrayList<String>();

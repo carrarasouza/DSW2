@@ -3,6 +3,12 @@
       xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout2}">
     <head>
         <meta charset="UTF-8" />
+        <script type="text/javascript" th:inline="javascript">
+        	var link = /*[[@{/upload}]]*/'';
+        	var profCurriculo = /*[[#{profissional.curriculo.arquivo}]]*/'';
+        	var consultaLabel = /*[[#{link.consulta.label}]]*/'';
+        	
+        </script>
     </head>
     <body>
         <div layout:fragment="content" th:remove="tag">
@@ -13,6 +19,7 @@
                   <form name="filtraEspecialidade" class="form-listagem">
                   	<label th:text="#{filtra.especialide}" for="especialidade"></label>
                   	<input id="especialidade" name="especialidade" /><br /><br />
+                  	<div class="noResults"></div>
                     <table class="table-list"> 
                         <thead>
                             <tr>
@@ -31,7 +38,7 @@
                                 	 <a th:href="@{/upload{file} (file=${profissional.curriculo}) }" th:text="#{profissional.curriculo.arquivo}">
                                 	</a> 
                                 </td>
-                                <td sec:authorize="isAuthenticated()" colspan="2" class="consulta">
+                                <td sec:authorize acess="isAuthenticated()" colspan="2" class="consulta" id="consultaAutorizada">
                                     <a th:href="aaaaaa"> 
                                         <span th:text="#{link.consulta.label}" > </span>
                                     </a>
@@ -42,8 +49,6 @@
                   </form>
             </div>
             </div>
-        </div>    
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-		<script type="text/javascript" th:inline="javascript" th:src="@{/js/ajaxEspecialidade.js}"></script>           
+        </div>          
     </body>
 </html>
