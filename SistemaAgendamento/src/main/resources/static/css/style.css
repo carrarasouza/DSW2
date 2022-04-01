@@ -286,3 +286,9 @@ ul.rm-padding{
 .title-list::after{
 	content: '👇';
 }
+
+.btn-icone{
+	margin-left: 10px;
+}
+
+

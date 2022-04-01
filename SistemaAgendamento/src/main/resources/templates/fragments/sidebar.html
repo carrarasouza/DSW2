@@ -9,7 +9,8 @@
         <body>
             <nav th:fragment="nav-sidebar">
                 <ul	class="rm-padding">
-                    <li class="link-list"> 
+                    <li class="link-list">
+                    	<i class="fa-solid fa-house"></i> 
                     	<a th:href="@{/}" th:text="#{sidebar.link.home}"></a>
                     </li>
                 </ul>
@@ -17,9 +18,11 @@
                     <ul class="rm-padding">
                         <li class="title-list" th:text="#{sidebar.titulo.profissional}"> <span class="teste1"></span> </li>
                         <li class="link-list"> 
+                        	<i class="fa-solid fa-calendar-check"></i>
                         	<a th:href="@{/cliente/listarConsulta}" th:text="#{consulta.listar.label}"> </a>
                         </li>
                         <li class="link-list">
+                        	<i class="fa-solid fa-user-tie"></i>
                         	<a th:href="@{/cliente/listarProfissional}" th:text="#{profissional.listar.label}"> </a>
                         </li>
                     </ul>
@@ -29,6 +32,7 @@
                     <ul class="rm-padding">
                         <li class="title-list" th:text="#{sidebar.titulo.consulta}"></li>
                         <li class="link-list">
+                        	<i class="fa-solid fa-calendar-check"></i>
                         	<a th:href="@{/profissional/listarConsulta}" th:text="#{consulta.listar.label}"> </a>
                         </li>
                     </ul>
@@ -38,9 +42,11 @@
                     <ul class="rm-padding">
                         <li class="title-list" th:text="#{sidebar.titulo.profissional}"></li><br />
                         <li class="link-list">
+                        	<i class="fa-solid fa-pen"></i>
                         	<a th:href="@{/admin/cadastrarProfissional}" th:text="#{sidebar.link.cadastrar}"></a>
                         </li> <br />
                         <li class="link-list">
+                        	<i class="fa-solid fa-list"></i>
                         	<a th:href="@{/admin/listarProfissional}" th:text="#{sidebar.link.listar}"></a>
                         </li><br />
                     </ul>
@@ -50,9 +56,11 @@
                     <ul class="rm-padding">
                         <li class="title-list" th:text="#{sidebar.titulo.cliente}"></li> <br />
                         <li class="link-list">
+                        	<i class="fa-solid fa-pen"></i>
                         	<a th:href="@{/admin/cadastrarCliente}" th:text="#{sidebar.link.cadastrar}"></a>
                         </li><br />
                         <li class="link-list">
+                        	<i class="fa-solid fa-list"></i>
                         	<a th:href="@{/admin/listarCliente}" th:text="#{sidebar.link.listar}"></a>
                         </li><br />
                     </ul>

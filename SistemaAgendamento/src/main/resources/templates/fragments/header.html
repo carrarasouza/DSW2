@@ -35,8 +35,10 @@
                         	<img alt="" th:src="@{/image/EUA.gif}" style="width: 30px;" />
                         </a>
                     </div>
-                    <span><i class="fa-solid fa-burger"></i></span>
-                    <a class="home-link" th:href="@{/}" th:text="#{title.label}"></a>
+                    <div  class="btn-icone">
+	                    <button href="#" onclick="menu()"><span>&#9776;</span></button>
+	                    <a class="home-link" th:href="@{/}" th:text="#{title.label}"></a>
+	                </div>
             </nav>
         </header>
     </body>
